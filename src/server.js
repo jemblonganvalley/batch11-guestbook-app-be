@@ -3,6 +3,7 @@ const express = require("express")
 const cors = require("cors")
 const env = require("dotenv")
 const db = require("./conn")
+const guest_routes = require("./features/guest/routes")
 
 // jalankan config env
 env.config()
@@ -18,6 +19,9 @@ app.use(express.json({
 app.use(express.urlencoded({
     extended: true
 }))
+
+// routes versi 2
+app.use(guest_routes)
 
 // routes
 app.get("/api/test", (req, res) => {
